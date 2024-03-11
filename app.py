@@ -80,8 +80,9 @@ def display_product(id_num):
 		\rDate Updated: {formatted_date}""")
 
 def add_product():
+	print("")
 	while True:
-		name = input("\nProduct name:  ")
+		name = input("Product name:  ")
 		if name == "":
 			print("Invalid input. The product must be given a name.")
 		else:
