@@ -12,7 +12,7 @@ Base = declarative_base()
 class Product(Base):
     __tablename__ = 'products'
     
-	product_id = Column(Integer, primary_key=True)
+    product_id = Column(Integer, primary_key=True)
     product_name = Column('Product', String)
     product_quantity = Column('Quantity', Integer)
     product_price = Column('Price', Integer)
@@ -80,7 +80,12 @@ def display_product(id_num):
 		\rDate Updated: {formatted_date}""")
 
 def add_product():
-	name = input("\nProduct name:  ")
+	while True:
+		name = input("\nProduct name:  ")
+		if name == "":
+			print("Invalid input. The product must be given a name.")
+		else:
+			break
 	while True:
 		try:
 			quantity = input("Quantity:  ")
@@ -116,7 +121,6 @@ def add_product():
 	session.commit()
 
 def backup():
-	# be careful to always create a new fresh file... maybe "a" is not the way
 	with open("backup.csv", "w") as csvfile:
 		fieldnames = ["product_name", "product_price", "product_quantity", "date_updated"]
 		writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
