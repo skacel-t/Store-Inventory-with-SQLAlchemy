@@ -45,13 +45,13 @@ def clean_id(id_str, id_options):
 	try:
 		id_int = int(id_str)
 	except ValueError:
-		print("Error! Please enter a whole number.")
+		print("\nInvalid input, please enter a number from the ID options.")
 		return None
 	else:
 		if id_int in id_options:
 			return id_int
 		else:
-			input("There is no product associated with this ID, please choose an ID from the ID Options. \nPress enter to try again.")
+			input("\nThere is no product associated with this ID. \nPlease choose an ID from the ID Options. \nPress enter to try again.")
 			return None	
 
 def menu():
@@ -68,7 +68,7 @@ def menu():
 		if choice in ['v', 'a', 'b', 'q']:
 			return choice
 		else: 
-			input("Input Error! Please choose one of the options above. Press enter to try again.")
+			input("\nInvalid input! Please enter 'v', 'a', 'b', or 'q'. \nPress enter to try again.")
 
 def display_product(id_num):
 	product = session.query(Product).filter(Product.product_id==id_num).first()
@@ -86,7 +86,7 @@ def add_product():
 			quantity = input("Quantity:  ")
 			quantity = int(quantity)
 		except ValueError:
-			print("Please enter a whole number.")
+			print("Invalid input. Please enter a whole number.")
 		else: 
 			break
 	while True:
@@ -95,7 +95,7 @@ def add_product():
 			price = float(price)
 			price = int(price*100)
 		except ValueError:
-			print("Please enter a number. For example: 10.99.")
+			print("Invalid input. Please enter a number without including the currency symbol. \nFor example, '10.99'.")
 		else: 
 			break
 
