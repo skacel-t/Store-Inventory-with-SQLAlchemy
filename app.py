@@ -108,8 +108,9 @@ def add_product():
     while True:
         try:
             price = input("Price:  ")
-            price = float(price)
-            price = int(price * 100)
+            price = float(price)*100
+            price = round(price, 0)
+            price = int(price)
         except ValueError:
             print("Invalid input. Please enter a number without including the currency symbol. \nFor example, '10.99'.")
         else:
